@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  dev:
+    image: gcc:4.9
+    build: .
+    volumes:
+      - .:/aoc2021
