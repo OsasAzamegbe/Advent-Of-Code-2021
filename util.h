@@ -4,7 +4,7 @@
 
 void print(const std::string& message);
 
-template <typename Iterator>
+template <class Iterator>
 void print(Iterator begin, Iterator end)
 {
     std::cout << "[";

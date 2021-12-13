@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     validArguments.push_back(day1);
     
     if (argv[1] == day1) {
-        Solution::day1();
+        Solution::Day1::day1();
     } else {
         std::string message = "Unkown argument passed: " + std::string(argv[1]) + ".\nValid arguments are:";
         print(message);
