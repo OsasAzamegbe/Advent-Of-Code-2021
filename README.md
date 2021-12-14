@@ -14,4 +14,4 @@ To run the solution for a given day:
 `day<x>` will be the command for the _x_ day's solution you want to run with the `day<x>test.txt` input file.
 
 For example:
-`SOLUTION=day2 docker-compose run --rm dev` will run the solution for the [first day](https://adventofcode.com/2021/day/1).
+`SOLUTION=day1 docker-compose run --rm dev` will run the solution for the [first day](https://adventofcode.com/2021/day/1).

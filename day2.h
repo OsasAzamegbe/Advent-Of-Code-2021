@@ -10,7 +10,6 @@ namespace Day2
 {
 
 void day2();
-int solve();
 
 }
 }

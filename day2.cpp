@@ -10,13 +10,7 @@ namespace Day2
 
 void day2()
 {
-    std::cout << "Answer to day2 part one: " << Day2::solve() << std::endl;
-}
-
-
-int solve()
-{
-    int x = 0, y = 0, num = 0;
+    int x = 0, y = 0, y2 = 0, aim = 0, num = 0;
     std::string line, command, value;
     std::ifstream inputFile("day2test.txt");
 
@@ -29,16 +23,21 @@ int solve()
 
         if (command == "forward") {
             x += num;
+            y2 += aim * num;
         } else if (command == "up") {
             y -= num;
+            aim -= num;
         } else {
             y += num;
+            aim += num;
         }
     }
 
     inputFile.close();
-    return x * y;
+    std::cout << "Answer to day2 part one: " << x * y << std::endl;
+    std::cout << "Answer to day2 part two: " << x * y2 << std::endl;
 }
+
 
 }
 }
