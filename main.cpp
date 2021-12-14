@@ -1,5 +1,6 @@
 #include <util.h>
 #include <day1.h>
+#include <day2.h>
 
 #include <string>
 #include <iostream>
@@ -14,11 +15,15 @@ int main(int argc, char *argv[])
     }
 
     static const std::string day1 = "day1";
+    static const std::string day2 = "day2";
     std::vector<std::string> validArguments;
     validArguments.push_back(day1);
+    validArguments.push_back("day2");
     
     if (argv[1] == day1) {
         Solution::Day1::day1();
+    } else if (argv[1] == day2) {
+        Solution::Day2::day2();
     } else {
         std::string message = "Unkown argument passed: " + std::string(argv[1]) + ".\nValid arguments are:";
         print(message);
