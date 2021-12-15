@@ -9,7 +9,7 @@ namespace Day1
 void day1()
 {
     std::vector<int> inputVector;
-    Day1::readInput(inputVector, "day1test.txt");
+    Day1::readInput(inputVector, "testfiles/day1test.txt");
     std::cout << "Answer to part one: " << Day1::solve(inputVector) << std::endl;
     std::cout << "Answer to part two: " << Day1::solvePartTwo(inputVector) << std::endl;
 }

@@ -12,7 +12,7 @@ void day2()
 {
     int x = 0, y = 0, y2 = 0, aim = 0, num = 0;
     std::string line, command, value;
-    std::ifstream inputFile("day2test.txt");
+    std::ifstream inputFile("testfiles/day2test.txt");
 
     while(std::getline(inputFile, line)) {
         //parse the input
