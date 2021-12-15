@@ -1,7 +1,5 @@
 #include <day3.h>
 
-#include <string>
-#include <vector>
 #include <iostream>
 #include <fstream>
 
@@ -49,6 +47,26 @@ void day3()
 
     std::cout << "Answer to day3 part one: " << gammaRate * epsilonRate << std::endl;
 }
+
+void day3PartTwo() 
+{
+    std::string binaryString;
+    std::ifstream inputFile("day3test.txt");
+    std::vector<std::string> data;
+    while (getline(inputFile, binaryString)) {
+        data.push_back(binaryString);
+    }
+
+    int oxygenGeneratorRating = readRating(data, [](int ones, int zeroes) {
+        return ones >= zeroes ? '1' : '0';
+    });
+    int co2ScrubberRating = readRating(data, [](int ones, int zeroes) {
+        return ones < zeroes ? '1' : '0';
+    });
+
+    std::cout << "Answer to day3 part two: " << oxygenGeneratorRating * co2ScrubberRating << std::endl;
+}
+
 
 }
 }

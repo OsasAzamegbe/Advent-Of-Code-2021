@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
         Solution::Day2::day2();
     }  else if (argv[1] == day3) {
         Solution::Day3::day3();
+        Solution::Day3::day3PartTwo();
     } else {
         std::string message = "Unkown argument passed: " + std::string(argv[1]) + ".\nValid arguments are:";
         print(message);
