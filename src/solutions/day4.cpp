@@ -14,12 +14,12 @@ namespace Day4
 
 bool Board::isBingo()
 {
-    for(int i = 0; i < 5; ++i) {
+    for(int i = 0; i < 5 && !hasAlreadyBingoed; ++i) {
         if (rows[i] == 5 || cols[i] == 5) {
-            return true;
+            hasAlreadyBingoed = true;
         }
     }
-    return false;
+    return hasAlreadyBingoed;
 }
 
 bool day4()
@@ -70,16 +70,26 @@ bool day4()
         }
 
         //start playing bingo
+        int numOfBoardsWithBingo = 0;
         for(int drawnNumber : bingoNumbers) {
             for(const BoardFinder& bf : numberBoardMap[drawnNumber]) {
                 Board* board = boards[bf.boardIndex];
+                if (board->hasAlreadyBingoed) {
+                    continue;
+                }
+
                 ++board->rows[bf.row];
                 ++board->cols[bf.col];
                 board->unmarkedSum -= drawnNumber;
                 
                 if (board->isBingo()) {
-                    std::cout << "Answer to day4 part one: " << board->unmarkedSum * drawnNumber << std::endl;
-                    return true;
+                    if (numOfBoardsWithBingo == 0) {
+                        std::cout << "Answer to day4 part one: " << board->unmarkedSum * drawnNumber << std::endl;
+                    } else if (numOfBoardsWithBingo == boards.size() - 1) {
+                        std::cout << "Answer to day4 part two: " << board->unmarkedSum * drawnNumber << std::endl;
+                        return true;
+                    }
+                    ++numOfBoardsWithBingo;
                 }
             }
         }

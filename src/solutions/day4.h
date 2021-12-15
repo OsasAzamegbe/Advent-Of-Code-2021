@@ -16,9 +16,10 @@ struct Board
     int rows[5] = {};
     int cols[5] = {};
     int unmarkedSum;
+    bool hasAlreadyBingoed;
     
     bool isBingo();
-    Board():unmarkedSum(0)
+    Board():unmarkedSum(0), hasAlreadyBingoed(false)
     {};
 };
 
