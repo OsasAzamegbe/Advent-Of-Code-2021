@@ -12,7 +12,7 @@ namespace Day3
 void day3()
 {
     std::string binaryString;
-    std::ifstream inputFile("day3test.txt");
+    std::ifstream inputFile("testfiles/day3test.txt");
     std::vector<int> onesFreq;
     std::vector<int> zeroesFreq;
 
