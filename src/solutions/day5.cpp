@@ -52,6 +52,18 @@ void day5()
             for (int i = lineStart; i <= lineEnd; ++i) {
                 ++grid[index(i, leftPoint.y)];
             }
+        } else {
+            //diagonal lines
+            int xdelta = leftPoint.x < rightPoint.x ? 1 : -1;
+            int ydelta = leftPoint.y < rightPoint.y ? 1 : -1;
+            int x = leftPoint.x, y = leftPoint.y;
+
+            while (x != rightPoint.x + xdelta && y != rightPoint.y + ydelta) {
+                ++grid[index(x, y)];
+
+                y += ydelta;
+                x += xdelta;
+            }
         }
         
     }
@@ -63,7 +75,7 @@ void day5()
         }
     }
 
-    std::cout << "Answer to day5 part one: " << numOverlaps << std::endl;
+    std::cout << "Answer to day5 part two: " << numOverlaps << std::endl;
 }
 
 int index(int x, int y)
