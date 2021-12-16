@@ -1,5 +1,4 @@
 #include <day4.h>
-#include <util.h>
 
 #include <iostream>
 #include <fstream>
