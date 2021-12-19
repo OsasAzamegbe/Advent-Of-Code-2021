@@ -46,7 +46,6 @@ void day9()
             if(isLowPoint) {
                 totalRiskLevel += heightMap[row][col] + 1;
                 int basinSize = getSizeOfBasin(seen, heightMap, row, col, -1);
-                std::cout << basinSize << std::endl;
                 int* minimum = std::min_element(maxBasins, maxBasins + 3);
                 if (*minimum < basinSize) {
                     *minimum = basinSize;
