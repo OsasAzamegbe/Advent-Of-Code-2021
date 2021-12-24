@@ -18,30 +18,33 @@ void day20()
     std::vector<std::vector<char>> image;
 
     std::getline(inputFile, imageEnhancementAlgo);
+    std::getline(inputFile, line); // for empty second line
+
     while(std::getline(inputFile, line)) {
-        if(line.empty()) {
-            continue;
-        }
         image.push_back(std::vector<char>());
         for(char pixel : line) {
             image.back().push_back(pixel);
         }
     }
-    countLightPixel(image);
     char fillPixel = '.';
 
-    std::vector<std::vector<char>> secondImage(image.size() + 4, std::vector<char>(image[0].size() + 4));
-    fillPixel = enhanceImage(secondImage, image, imageEnhancementAlgo, fillPixel);
+    std::cout << "Answer to day 20 part one: " << enhanceImage(image, imageEnhancementAlgo, fillPixel, 2) << std::endl;
+    std::cout << "Answer to day 20 part two: " << enhanceImage(image, imageEnhancementAlgo, fillPixel, 48) << std::endl;
 
-    std::cout << fillPixel << std::endl;
-    countLightPixel(secondImage);
+}
 
-    std::vector<std::vector<char>> thirdImage(secondImage.size() + 4, std::vector<char>(secondImage[0].size() + 4));
-    enhanceImage(thirdImage, secondImage, imageEnhancementAlgo, fillPixel);
+int enhanceImage(
+    std::vector<std::vector<char>>& image,
+    const std::string& imageEnhancementAlgo, char fillPixel, int numOfEnhancements)
+{
+    while (numOfEnhancements > 0) {
+        std::vector<std::vector<char>> resultImage(image.size() + 4, std::vector<char>(image[0].size() + 4));
+        fillPixel = enhanceImage(resultImage, image, imageEnhancementAlgo, fillPixel);
+        image = resultImage;
 
-    std::cout << "Answer to day 20 part one: " << countLightPixel(thirdImage) << std::endl;
-    std::cout << "Answer to day 20 part two: " << "placeholder" << std::endl;
-
+        --numOfEnhancements;
+    }
+    return countLightPixel(image);
 }
 
 char enhanceImage(
@@ -59,14 +62,10 @@ char enhanceImage(
 
 int getEnhancementIndex(const std::vector<std::vector<char>>& inputImage, int row, int col, char fillPixel)
 {
-    std::string binary = "";
+    std::string binary;
     for(int i = row - 1; i < row + 2; ++i) {
         for (int j = col - 1; j < col + 2; ++j) {
-            if (getPixel(inputImage, i, j, fillPixel) == '.') {
-                binary.push_back('0');
-            } else {
-                binary.push_back('1');
-            }
+            binary.push_back(getPixel(inputImage, i, j, fillPixel) == '.' ? '0' : '1');
         }
     }
 
@@ -86,15 +85,12 @@ int countLightPixel(const std::vector<std::vector<char>>& image)
 {
     int numLightPixels = 0;
     for(int i = 0; i < image.size(); ++i) {
-        std::cout << std::endl;
         for (int j = 0; j < image[0].size(); ++j) {
-            std::cout << image[i][j];
             if(image[i][j] == '#') {
                 ++numLightPixels;
             }
         }
     }
-    std::cout << '\n' << std::endl;
 
     return numLightPixels;
 }
