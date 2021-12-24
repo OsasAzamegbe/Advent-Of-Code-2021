@@ -11,6 +11,7 @@
 #include <day10.h>
 #include <day11.h>
 #include <day20.h>
+#include <day21.h>
 
 #include <string>
 #include <iostream>
@@ -49,8 +50,10 @@ int main(int argc, char *argv[])
         Solution::Day11::day11();
     } else if (argv[1] == std::string("day20")) {
         Solution::Day20::day20();
+    } else if (argv[1] == std::string("day21")) {
+        Solution::Day21::day21();
     } else {
-        std::string message = "Unkown argument passed: " + std::string(argv[1]) + ".\nValid arguments are 'day1' - 'day11' and 'day20'";
+        std::string message = "Unkown argument passed: " + std::string(argv[1]) + ".\nValid arguments are 'day1' - 'day11' and 'day20' - 'day21'";
         print(message);
     }
 
